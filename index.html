@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap" rel="stylesheet">
+        
+        <meta charset="UTF-8">
+        <title>NYC ANIMALS</title>
+        <style>
+
+            
+        body {
+                background-color: #97baa0;
+            }
+
+            .dropdown {
+               
+                display: inline-block;
+                position: relative;
+
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: #f9f9f9;
+                width: auto;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                padding: 0;
+                z-index: 1;
+                
+                
+            }
+
+            .dropbtn {
+                color: black;
+                display: block;
+                text-decoration: none;
+                padding: 12px 16px;
+                
+                
+            }
+
+            .dropdown-content a {
+                color: black;
+                display: block;
+                text-decoration: none;
+                padding: 12px 16px;
+                text-align: center;
+                background-color: lightgrey;
+
+              
+                
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+
+            }
+
+            .dropdown-content a:hover {
+                background-color: lightgrey;
+            
+            }
+
+
+            .image.visible {
+                display: block !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+            }
+            
+            h1 {
+                text-align: center;
+                font-size: 35px;
+                color: #154d25;
+                font-family: 'Tilt Neon', sans-serif;
+                background-color: lightgreen
+            }
+           
+
+
+            .toggle_divs {
+                background-color: gray;
+                height: 100px;
+                width: 100px;
+                margin-top: 10px;
+            }
+
+
+            
+        .image_container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 20px; 
+            
+        }
+
+        .image_container .image {
+            width: 200px; 
+            margin-bottom: 20px; 
+            display: none; 
+            margin-top: 20px;
+           
+            
+        }
+
+        .back_color {
+            background-color: #154d25;
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .image.visible {
+            display: block; 
+        }
+
+            img {
+                width: 100%;
+                object-fit: cover;
+                height: 100%;
+            }
+
+            .no-display {
+                display: none;
+            }
+
+        .image_caption {
+            text-align: center;
+            margin-top: 5px;
+            font-size: 15px;
+            font-family: 'Tilt Neon', sans-serif;
+    
+            
+        }
+
+        .image {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            background-color: transparent;
+            
+        }
+
+
+        </style>
+
+        <h1>Craziest Animals Found in NYC Parks</h1>
+    </head>
+    <body>
+
+        <div class="dropdown">
+            <button class="dropbtn">Species Status</button>
+            <div id="dropdownContent" class="dropdown-content">
+                <button onclick="showImage('native')">Native</a>
+                <button onclick="showImage('exotic')">Exotic</a>
+            </div>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropbtn">Animal Class</button>
+            <div id="dropdownContent2" class="dropdown-content">
+                <button onclick="showImage('mammal')">Mammal</a>
+                <button onclick="showImage('bird')">Bird</a>
+                <button onclick="showImage('amphibian')">Amphibian/Reptile</a>
+            </div>
+        </div>
+        
+
+        <div class="image_container">
+            <div id="boa" class="image exotic reptile">
+                <img src="images/boa.jpg">
+                <div class="image_caption">Boa Constrictor</div>
+            </div>
+            <div id="bobcat" class="image native mammal"> 
+                <img src="images/bob.jpg">
+                <div class="image_caption">Bobcat</div>
+            </div>
+            <div id="cattle" class="image native mammal">
+                <img src="images/cattle.jpg">
+                <div class="image_caption">Cattle</div>
+            </div>
+            <div id="eagle" class="image native bird">
+                <img src="images/eagle.jpg">
+                <div class="image_caption">Bald Eagle</div>
+            </div>
+            <div id="eel" class="image exotic amphibian">
+                <img src="images/eel.jpg">
+                <div class="image_caption">Asian Swamp Eel</div>
+            </div>
+            <div id="peafowl" class="image exotic bird">
+                <img src="images/peafowl.jpg">
+                <div class="image_caption">Indian Peafowl</div>
+            </div>
+            <div id="chicken" class="image native bird">
+                <img src="images/chicken.jpg">
+                <div class="image_caption">Chicken</div>
+            </div>
+            <div id="tegu" class="image exotic amphibian">
+                <img src="images/tegu.jpg">
+                <div class="image_caption">Argentine Black and White Tegu</div>
+            </div>
+            <div id="owl" class="image exotic bird">
+                <img src="images/owl.jpg">
+                <div class="image_caption">Eurasian Eagle Owl</div>
+            </div>
+            <div id="puma" class="image exotic mammal">
+                <img src="images/puma.jpg">
+                <div class="image_caption">Puma</div>
+            </div>
+            <div id="turkey" class="image native bird">
+                <img src="images/turkey.jpg">
+                <div class="image_caption">Wild Turkey</div>
+            </div>
+            <div id="porpoise" class="image native mammal">
+                <img src="images/porpoise.jpg">
+                <div class="image_caption">Harbor Porpoise</div>
+            </div>
+        </div>
+
+
+        <script>
+
+    function showAllImages () {
+        var images = document.querySelectorAll('.image');
+        images.forEach(function(image) {
+            image.classList.add('visible');
+        });
+    }
+
+
+        
+        function showImage(category) {
+    var images = document.querySelectorAll('.image');
+    images.forEach(function(image) {
+        if (image.classList.contains(category)) {
+            image.classList.add('visible');
+        } else {
+            image.classList.remove('visible');
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    showAllImages();
+});
+
+window.onload = function() {
+    var dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(function(dropdown) {
+        var buttonWidth = dropdown.querySelector('.dropbtn').offsetWidth;
+        dropdown.querySelector('.dropdown-content').style.width = buttonWidth + 'px';
+    });
+    };
+
+
+        </script>
+
+
+
+
+
+        
+      
